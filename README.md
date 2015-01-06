@@ -6,6 +6,11 @@ d3 plugin to zoom along multiple axes independently
 
 ![zooming example](./images/zoom.gif)
 
+zooming behaves normally until modifier keys are applied.
+
+* `ctrl + zoom` zooms only along the Y axis
+* `alt + zoom` zooms only along the X axis
+
 ## Usage
 
 Script Tag:
