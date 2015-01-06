@@ -1,0 +1,26 @@
+{
+  "name": "d3-multiaxis-zoom",
+  "version": "0.0.0",
+  "description": "d3 plugin to allow zooming along multiple axes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/mathisonian/d3-multiaxis-zoom"
+  },
+  "keywords": [
+    "d3",
+    "zoom",
+    "plugin",
+    "multi",
+    "zoom"
+  ],
+  "author": "Matthew Conlen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mathisonian/d3-multiaxis-zoom/issues"
+  },
+  "homepage": "https://github.com/mathisonian/d3-multiaxis-zoom"
+}
