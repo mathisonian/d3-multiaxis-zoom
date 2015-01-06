@@ -9,7 +9,7 @@ d3 plugin to zoom along multiple axes independently
 ## Usage
 
 Script Tag:
-```
+```html
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="../path/to/d3-multiaxis-zoom.js"></script>
