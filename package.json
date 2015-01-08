@@ -1,6 +1,6 @@
 {
   "name": "d3-multiaxis-zoom",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "d3 plugin to allow zooming along multiple axes",
   "main": "index.js",
   "scripts": {
