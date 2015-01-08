@@ -8,7 +8,7 @@ d3 plugin to zoom along multiple axes independently
 
 zooming behaves normally until modifier keys are applied.
 
-* `ctrl + zoom` zooms only along the Y axis
+* `meta + zoom` zooms only along the Y axis (⌘ on osx)
 * `alt + zoom` zooms only along the X axis
 
 ## Usage
