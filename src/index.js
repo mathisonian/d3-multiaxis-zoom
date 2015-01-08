@@ -2164,8 +2164,6 @@ d3.interpolateZoom = function(p0, p1) {
   return interpolate;
 };
 
-d3.behavior = {};
-
 d3.behavior.zoom = function() {
   var view = {
     x: 0,
