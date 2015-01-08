@@ -2187,9 +2187,6 @@ d3.behavior.zoom = function() {
           };
           zoomstarted(dispatch);
         }).tween("zoom:zoom", function() {
-          console.log("zoom:zoom");
-          console.log("dx: " + dx);
-          console.log("dy: " + dy);
           var dx = size[0], dy = size[1], cx = center0 ? center0[0] : dx / 2, cy = center0 ? center0[1] : dy / 2, i = d3.interpolateZoom([ (cx - view.x) / view.kx, (cy - view.y) / view.ky, dx / view.kx, dy / view.ky ], [ (cx - view1.x) / view1.kx, (cy - view1.y) / view1.ky, dx / view1.kx, dy / view1.ky ]);
           return function(t) {
             var l = i(t), kx = dx / l[2], ky = dy / l[3];
@@ -2288,7 +2285,6 @@ d3.behavior.zoom = function() {
     return [ l[0] * view.kx + view.x, l[1] * view.ky + view.y ];
   }
   function scaleTo(sx, sy) {
-    console.log("scaling to " + [ sx, sy ]);
     sy = sy == null ? sx : sy;
     view.kx = Math.max(scaleExtent[0], Math.min(scaleExtent[1], sx));
     view.ky = Math.max(scaleExtent[0], Math.min(scaleExtent[1], sy));
@@ -2352,7 +2348,18 @@ d3.behavior.zoom = function() {
     zoomstarted(dispatch);
     function moved() {
       dragged = 1;
-      translateTo(d3.mouse(that), location0);
+
+      var p = d3.mouse(that);
+      var l = location0;
+
+      if (d3.event.altKey) {
+        translateTo([p[0], 0], [l[0], 0]);
+      } else if (d3.event.metaKey) {
+        translateTo([0, p[1]], [0, l[1]]);
+      } else {
+        translateTo(d3.mouse(that), location0);
+      }
+      
       zoomed(dispatch);
     }
     function ended() {
@@ -2412,7 +2419,21 @@ d3.behavior.zoom = function() {
         scaleTo(scale1);
       }
       touchtime = null;
-      translateTo(p0, l0);
+
+
+      var transP = p0;
+      var transL = l0;
+
+      if (d3.event.altKey) {
+        translateTo([transP[0], 0], [transL[0], 0]);
+      } else if (d3.event.metaKey) {
+        translateTo([0, transP[1]], [0, transL[1]]);
+      } else {
+        translateTo(p0, l0);
+      }
+
+
+
       zoomed(dispatch);
     }
     function ended() {
@@ -2454,8 +2475,7 @@ d3.behavior.zoom = function() {
     var p = d3.mouse(this), kx = Math.log(view.kx) / Math.LN2, ky = Math.log(view.ky) / Math.LN2;
     if (d3.event.altKey) {
       zoomTo(this, p, location(p), d3.event.shiftKey ? Math.ceil(kx) - 1 : Math.floor(ky) + 1, ky);
-    } else if (d3.event.ctrlKey) {
-      scaleTo(kx, Math.pow(2, d3_behavior_zoomDelta() * .002) * view.ky);
+    } else if (d3.event.metaKey) {
       zoomTo(this, p, location(p), kx, d3.event.shiftKey ? Math.ceil(ky) - 1 : Math.floor(ky) + 1);
     } else {
       zoomTo(this, p, location(p), d3.event.shiftKey ? Math.ceil(kx) - 1 : Math.floor(ky) + 1, d3.event.shiftKey ? Math.ceil(ky) - 1 : Math.floor(ky) + 1);
