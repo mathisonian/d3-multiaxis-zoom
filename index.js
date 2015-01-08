@@ -1,6 +1,4 @@
-
 var d3_multiaxis_zoom = require('./src');
-
  
 // export as a Node module, an AMD module or a global browser variable
 if (typeof module !== 'undefined') {
