@@ -2323,12 +2323,6 @@ d3.behavior.zoom = function() {
   }
   function zoomed(dispatch) {
     rescale();
-    console.log({
-      type: "zoom",
-      scaleX: view.kx,
-      scaleY: view.ky,
-      translate: [ view.x, view.y ]
-    });
     dispatch({
       type: "zoom",
       scaleX: view.kx,
