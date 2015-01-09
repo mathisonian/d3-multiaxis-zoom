@@ -2291,8 +2291,15 @@ d3.behavior.zoom = function() {
   }
   function translateTo(p, l) {
     l = point(l);
-    view.x += p[0] - l[0];
-    view.y += p[1] - l[1];
+    if (d3.event.altKey) {
+      view.x += p[0] - l[0];
+    } else if (d3.event.metaKey) {
+      view.y += p[1] - l[1];
+    } else {
+      view.x += p[0] - l[0];
+      view.y += p[1] - l[1];
+    }
+
   }
   function zoomTo(that, p, l, kx, ky) {
     ky = ky == null ? kx : ky;
@@ -2342,18 +2349,7 @@ d3.behavior.zoom = function() {
     zoomstarted(dispatch);
     function moved() {
       dragged = 1;
-
-      var p = d3.mouse(that);
-      var l = location0;
-
-      if (d3.event.altKey) {
-        translateTo([p[0], 0], [l[0], 0]);
-      } else if (d3.event.metaKey) {
-        translateTo([0, p[1]], [0, l[1]]);
-      } else {
-        translateTo(d3.mouse(that), location0);
-      }
-      
+      translateTo(d3.mouse(that), location0);
       zoomed(dispatch);
     }
     function ended() {
@@ -2413,20 +2409,7 @@ d3.behavior.zoom = function() {
         scaleTo(scale1);
       }
       touchtime = null;
-
-
-      var transP = p0;
-      var transL = l0;
-
-      if (d3.event.altKey) {
-        translateTo([transP[0], 0], [transL[0], 0]);
-      } else if (d3.event.metaKey) {
-        translateTo([0, transP[1]], [0, transL[1]]);
-      } else {
-        translateTo(p0, l0);
-      }
-
-
+      translateTo(p0, l0);
 
       zoomed(dispatch);
     }
