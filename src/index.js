@@ -2457,7 +2457,7 @@ d3.behavior.zoom = function() {
     d3_eventPreventDefault();
     if (d3.event.altKey) {
       scaleTo(Math.pow(2, d3_behavior_zoomDelta() * .002) * view.kx, view.ky);
-    } else if (d3.event.ctrlKey) {
+    } else if (d3.event.metaKey) {
       scaleTo(view.kx, Math.pow(2, d3_behavior_zoomDelta() * .002) * view.ky);
     } else {
       scaleTo(Math.pow(2, d3_behavior_zoomDelta() * .002) * view.kx, Math.pow(2, d3_behavior_zoomDelta() * .002) * view.ky);
