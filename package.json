@@ -4,6 +4,7 @@
   "description": "d3 plugin to allow zooming along multiple axes",
   "main": "index.js",
   "scripts": {
+    "build": "browserify index.js --s d3_multiaxis_zoom -o d3-multiaxis-zoom.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/mathisonian/d3-multiaxis-zoom/issues"
   },
-  "homepage": "https://github.com/mathisonian/d3-multiaxis-zoom"
+  "homepage": "https://github.com/mathisonian/d3-multiaxis-zoom",
+  "devDependencies": {
+    "browserify": "^13.0.0"
+  }
 }
